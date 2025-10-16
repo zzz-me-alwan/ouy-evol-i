@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxAuz1ytOj1zujqA4l8bPB96KMjGW3ydyRXkGgzJH2b2zLz0uYocOfa55H6A6ccmRif8A/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzm7ODOZMkckKuS7B-1PMe0zfG9X52K5k4LgQvyyPGfCFvtGZJojikVtHxSc__UFPkY9A/exec";
 
 document.getElementById("absenForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -30,3 +30,4 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
   };
   reader.readAsDataURL(photo);
 });
+
