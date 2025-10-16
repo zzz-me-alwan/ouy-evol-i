@@ -1,47 +1,38 @@
-// URL endpoint Google Apps Script
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNHit9HEvKhD7AlpvDjutTnMCsuNpcI8ieJkheiMj-QEUhE7DXDOGD7KnXARPh_zmtWA/exec";
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>hii ❤️</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="relative min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-green-100 via-blue-100 to-green-200 overflow-hidden">
 
-// Menangani event submit pada form
-document.getElementById("absenForm").addEventListener("submit", async (e) => {
-  e.preventDefault(); // Mencegah reload halaman
+  <!-- Gelembung love -->
+  <div id="love-bg"></div>
 
-  // Ambil data dari form
-  const title = document.getElementById("title").value;
-  const photo = document.getElementById("photo").files[0];
-  const status = document.getElementById("status");
+  <!-- Konten utama -->
+  <div class="relative z-10 p-6 bg-white/60 backdrop-blur-lg rounded-3xl shadow-2xl w-11/12 max-w-md mx-auto border border-blue-200">
+    <div class="flex justify-center items-center gap-2 mb-4">
+      <img src="https://upload.wikimedia.org/wikipedia/en/d/d1/Hello_Kitty_character_portrait.png" alt="Hello Kitty" class="w-10 h-10">
+      <h1 class="text-2xl sm:text-3xl font-bold text-green-700">nanti aku yang sampaikan</h1>
+    </div>
 
-  status.innerText = "Mengirim..."; // Tampilkan status proses
+    <form id="absenForm" class="flex flex-col gap-4">
+      <label for="title" class="font-medium text-blue-700">what, where, who, when:</label>
+      <input type="text" id="title" required class="border border-blue-300 rounded-xl p-2 focus:ring-2 focus:ring-green-400 focus:outline-none text-center">
 
-  // Baca file foto sebagai base64
-  const reader = new FileReader();
-  reader.onloadend = async () => {
-    const base64Image = reader.result.split(",")[1]; // Ambil bagian base64
+      <label for="photo" class="font-medium text-blue-700">Image:</label>
+      <input type="file" id="photo" accept="image/*" capture="environment" required class="border border-green-300 rounded-xl p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none text-center">
 
-    // Siapkan data untuk dikirim
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("filename", photo.name);
-    formData.append("image", base64Image);
+      <button type="submit" class="mt-3 bg-gradient-to-r from-green-400 to-blue-400 text-white font-semibold py-2 rounded-full shadow-md hover:scale-105 transition duration-200">
+        menepati janji
+      </button>
+    </form>
 
-    try {
-      // Kirim data ke Google Apps Script
-      const res = await fetch(SCRIPT_URL, { method: "POST", body: formData });
-      const text = await res.text();
+    <p id="status" class="mt-4 font-medium text-green-700"></p>
+  </div>
 
-      // Jika respons mengandung URL, jangan tampilkan
-      if (text.includes("http") || text.includes("https")) {
-        status.innerText = "✅ Data berhasil dikirim.";
-      } else {
-        status.innerText = "✅ " + text;
-      }
-
-      // Reset form setelah berhasil
-      document.getElementById("absenForm").reset();
-    } catch (err) {
-      // Tampilkan pesan gagal tanpa URL
-      status.innerText = "❌ Gagal mengirim data.";
-    }
-  };
-
-  reader.readAsDataURL(photo); // Mulai membaca file foto
-});
+  <script src="script.js"></script>
+</body>
+</html>
