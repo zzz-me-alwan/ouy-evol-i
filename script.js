@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbrK8nhime3KhGRtIe2GR1bvdrl9jo0Q94-myKLPR4y3Z4WsRcZ0Dh8K8XdZt5LoZMDQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyw1k6ggeRHqLh5dORWyj4Drmdl_oBi1SkwcpeUXHt-q7BaRrYTM26CjXV4ZePCL8kZxQ/exec";
 
 document.getElementById("absenForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -20,7 +20,7 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
     try {
       const res = await fetch(SCRIPT_URL, { method: "POST", body: formData });
       const data = await res.json();
-      status.innerText = data.message || "Absen selesai.";
+      status.innerText = data.message || "✅ Absen selesai.";
       document.getElementById("absenForm").reset();
     } catch (err) {
       status.innerText = "❌ Gagal mengirim absen.";
@@ -28,4 +28,3 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
   };
   reader.readAsDataURL(photo);
 });
-
