@@ -20,7 +20,7 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
     try {
       const res = await fetch(SCRIPT_URL, { method: "POST", body: formData });
       const data = await res.json();
-      status.innerText = data.message || "✅ Absen selesai.";
+      status.innerText = data.message || "Absen selesai.";
       document.getElementById("absenForm").reset();
     } catch (err) {
       status.innerText = "❌ Gagal mengirim absen.";
