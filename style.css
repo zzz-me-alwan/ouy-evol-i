@@ -1,4 +1,4 @@
-/* ANIMASI GELEMBUNG LOVE 💕 */
+/* Love background 💕 */
 #love-bg {
   position: fixed;
   inset: 0;
@@ -7,18 +7,19 @@
   pointer-events: none;
 }
 
-/* Hati animasi */
+/* Love bubble style */
 .love {
   position: absolute;
-  color: rgba(255, 105, 180, 0.3);
+  color: rgba(255, 105, 180, 0.35);
   font-size: 20px;
   animation: floatLove 8s linear infinite;
+  user-select: none;
 }
 
 @keyframes floatLove {
   0% {
     transform: translateY(100vh) scale(0.6) rotate(0deg);
-    opacity: 0.8;
+    opacity: 0.9;
   }
   100% {
     transform: translateY(-10vh) scale(1.2) rotate(360deg);
