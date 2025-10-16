@@ -1,0 +1,27 @@
+/* ANIMASI GELEMBUNG LOVE 💕 */
+#love-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Hati animasi */
+.love {
+  position: absolute;
+  color: rgba(255, 105, 180, 0.3);
+  font-size: 20px;
+  animation: floatLove 8s linear infinite;
+}
+
+@keyframes floatLove {
+  0% {
+    transform: translateY(100vh) scale(0.6) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
