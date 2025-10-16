@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzp4M1kaPCYE_gXykXTfkJLn9IFpwqIo7cPlDQ1Nf1plkVG8G73GThFaq78LD1yMLg4lg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbrK8nhime3KhGRtIe2GR1bvdrl9jo0Q94-myKLPR4y3Z4WsRcZ0Dh8K8XdZt5LoZMDQ/exec";
 
 document.getElementById("absenForm").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -7,13 +7,11 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
   const photo = document.getElementById("photo").files[0];
   const status = document.getElementById("status");
 
-  status.innerText = "Mengirim...";
+  status.innerText = "📤 Mengirim absen...";
 
-  // Convert foto ke base64
   const reader = new FileReader();
   reader.onloadend = async () => {
     const base64Image = reader.result.split(",")[1];
-
     const formData = new FormData();
     formData.append("title", title);
     formData.append("filename", photo.name);
@@ -21,16 +19,13 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
 
     try {
       const res = await fetch(SCRIPT_URL, { method: "POST", body: formData });
-      const text = await res.text();
-      status.innerText = "✅ " + text;
+      const data = await res.json();
+      status.innerText = data.message || "Absen selesai.";
       document.getElementById("absenForm").reset();
     } catch (err) {
-      status.innerText = "❌ Gagal: " + err.message;
+      status.innerText = "❌ Gagal mengirim absen.";
     }
   };
   reader.readAsDataURL(photo);
 });
-
-
-
 
