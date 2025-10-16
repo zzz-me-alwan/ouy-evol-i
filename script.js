@@ -28,5 +28,5 @@ document.getElementById("absenForm").addEventListener("submit", async (e) => {
       status.innerText = "❌ Gagal: " + err.message;
     }
   };
-  reader.readAsDataURL(photo);
 });
+
